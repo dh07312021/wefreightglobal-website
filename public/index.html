@@ -3,10 +3,185 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Hello, World!</title>
+		<title data-i18n-key="page_title">WeFreightGlobal LLC - Global Logistics Solutions</title>
+		<script src="https://cdn.tailwindcss.com"></script>
 	</head>
 	<body>
-		<h1 id="heading">Hello, World!</h1>
-		<p>This page comes from a static asset stored at `public/index.html` as configured in `wrangler.jsonc`.</p>
+		<!-- Header -->
+		<header class="bg-white shadow-md py-4">
+			<div class="container mx-auto flex justify-between items-center px-4">
+				<a href="/" class="flex items-center">
+					<img src="./resources/logo_general.png" alt="WeFreightGlobal LLC Logo" class="h-10" />
+					<span class="ml-3 text-xl font-bold text-gray-800">WeFreightGlobal LLC</span>
+				</a>
+				<div class="flex items-center space-x-6">
+					<nav class="hidden md:block">
+						<ul class="flex space-x-6">
+							<li><a href="#" class="text-gray-600 hover:text-blue-600 font-semibold" data-i18n-key="nav_home">Home</a></li>
+							<li><a href="#" class="text-gray-600 hover:text-blue-600 font-semibold" data-i18n-key="nav_services">Services</a></li>
+							<li><a href="#" class="text-gray-600 hover:text-blue-600 font-semibold" data-i18n-key="nav_about">About Us</a></li>
+							<li><a href="#" class="text-gray-600 hover:text-blue-600 font-semibold" data-i18n-key="nav_contact">Contact</a></li>
+							<li><a href="#" class="text-blue-600 hover:text-blue-800 font-semibold border-2 border-blue-600 hover:border-blue-800 px-4 py-2 rounded-md transition duration-300 ease-in-out" data-i18n-key="nav_get_a_quote">Get a Quote</a></li>
+						</ul>
+					</nav>
+					<!-- Language Switcher -->
+					<div class="flex items-center ml-4">
+						<a href="#" id="lang-en" class="text-gray-600 hover:text-blue-600 font-semibold">EN</a>
+						<span class="text-gray-400 mx-2">|</span>
+						<a href="#" id="lang-zh" class="text-gray-600 hover:text-blue-600 font-semibold">中文</a>
+					</div>
+					<!-- Mobile menu button (for later) -->
+					<button class="md:hidden text-gray-600 hover:text-blue-600">
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<!-- Hero Section -->
+		<section class="bg-blue-700 text-white py-20 px-4">
+			<div class="container mx-auto text-center">
+				<h1 class="text-5xl font-extrabold leading-tight mb-6" data-i18n-key="hero_headline">Your Trusted Partner in Global Logistics</h1>
+				<p class="text-xl mb-8 max-w-2xl mx-auto" data-i18n-key="hero_subheading">Seamless, efficient, and reliable freight forwarding solutions tailored to your business needs.</p>
+				<button class="bg-yellow-400 text-blue-900 font-bold py-3 px-8 rounded-full text-lg hover:bg-yellow-300 transition duration-300 ease-in-out shadow-lg" data-i18n-key="hero_cta">Get a Free Quote</button>
+			</div>
+		</section>
+
+		<!-- Placeholder for other sections -->
+		<main class="container mx-auto my-12 px-4">
+			<section id="services" class="mb-12">
+				<h2 class="text-4xl font-bold text-center text-gray-800 mb-8" data-i18n-key="services_title">Our Services</h2>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+					<div class="bg-gray-100 p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-semibold mb-2" data-i18n-key="service_air_freight_title">Air Freight</h3>
+						<p class="text-gray-600" data-i18n-key="service_air_freight_desc">Fast and reliable air cargo solutions for time-sensitive shipments.</p>
+					</div>
+					<div class="bg-gray-100 p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-semibold mb-2" data-i18n-key="service_sea_freight_title">Sea Freight</h3>
+						<p class="text-gray-600" data-i18n-key="service_sea_freight_desc">Cost-effective ocean shipping for large volume cargo worldwide.</p>
+					</div>
+					<div class="bg-gray-100 p-6 rounded-lg shadow-md">
+						<h3 class="text-xl font-semibold mb-2" data-i18n-key="service_road_freight_title">Road Freight</h3>
+						<p class="text-gray-600" data-i18n-key="service_road_freight_desc">Efficient ground transportation across domestic and international routes.</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="about" class="mb-12 text-center">
+				<h2 class="text-4xl font-bold text-gray-800 mb-8" data-i18n-key="about_title">Why Choose WeFreightGlobal?</h2>
+				<p class="text-lg text-gray-700 max-w-3xl mx-auto" data-i18n-key="about_desc">
+					With years of experience and a global network, WeFreightGlobal LLC is committed to providing unparalleled logistics services. We prioritize your cargo's safety, timely delivery, and cost-efficiency.
+				</p>
+			</section>
+
+			<section id="contact" class="mb-12 text-center">
+				<h2 class="text-4xl font-bold text-gray-800 mb-8" data-i18n-key="contact_title">Get in Touch</h2>
+				<p class="text-lg text-gray-700 mb-4" data-i18n-key="contact_desc">Ready to streamline your logistics? Contact us today for a personalized solution.</p>
+				<button class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full text-lg hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg" data-i18n-key="contact_cta">Contact Us</button>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="bg-gray-800 text-white py-8 px-4">
+			<div class="container mx-auto text-center">
+				<p data-i18n-key="footer_copyright">&copy; 2026 WeFreightGlobal LLC. All rights reserved.</p>
+				<div class="flex justify-center space-x-4 mt-4">
+					<a href="#" class="text-gray-400 hover:text-white" data-i18n-key="footer_privacy">Privacy Policy</a>
+					<a href="#" class="text-gray-400 hover:text-white" data-i18n-key="footer_terms">Terms of Service</a>
+				</div>
+			</div>
+		</footer>
+
+		<script>
+			const translations = {
+				en: {
+					page_title: "WeFreightGlobal LLC - Global Logistics Solutions",
+					nav_home: "Home",
+					nav_services: "Services",
+					nav_about: "About Us",
+					nav_contact: "Contact",
+					nav_get_a_quote: "Get a Quote",
+					hero_headline: "Your Trusted Partner in Global Logistics",
+					hero_subheading: "Seamless, efficient, and reliable freight forwarding solutions tailored to your business needs.",
+					hero_cta: "Get a Free Quote",
+					services_title: "Our Services",
+					service_air_freight_title: "Air Freight",
+					service_air_freight_desc: "Fast and reliable air cargo solutions for time-sensitive shipments.",
+					service_sea_freight_title: "Sea Freight",
+					service_sea_freight_desc: "Cost-effective ocean shipping for large volume cargo worldwide.",
+					service_road_freight_title: "Road Freight",
+					service_road_freight_desc: "Efficient ground transportation across domestic and international routes.",
+					about_title: "Why Choose WeFreightGlobal?",
+					about_desc: "With years of experience and a global network, WeFreightGlobal LLC is committed to providing unparalleled logistics services. We prioritize your cargo's safety, timely delivery, and cost-efficiency.",
+					contact_title: "Get in Touch",
+					contact_desc: "Ready to streamline your logistics? Contact us today for a personalized solution.",
+					contact_cta: "Contact Us",
+					footer_copyright: "&copy; 2026 WeFreightGlobal LLC. All rights reserved.",
+					footer_privacy: "Privacy Policy",
+					footer_terms: "Terms of Service"
+				},
+				zh: {
+					page_title: "WeFreightGlobal LLC - 全球物流解决方案",
+					nav_home: "首页",
+					nav_services: "服务",
+					nav_about: "关于我们",
+					nav_contact: "联系我们",
+					nav_get_a_quote: "获取报价",
+					hero_headline: "您值得信赖的全球物流伙伴",
+					hero_subheading: "无缝、高效、可靠的货运代理解决方案，满足您的业务需求。",
+					hero_cta: "获取免费报价",
+					services_title: "我们的服务",
+					service_air_freight_title: "空运",
+					service_air_freight_desc: "快速可靠的空运解决方案，适用于时间敏感的货物。",
+					service_sea_freight_title: "海运",
+					service_sea_freight_desc: "经济高效的远洋运输，适用于全球大宗货物。",
+					service_road_freight_title: "陆运",
+					service_road_freight_desc: "高效的陆路运输，覆盖国内和国际路线。",
+					about_title: "为何选择 WeFreightGlobal？",
+					about_desc: "凭借多年的经验和全球网络，WeFreightGlobal LLC 致力于提供无与伦比的物流服务。我们优先考虑您的货物安全、及时交付和成本效益。",
+					contact_title: "联系我们",
+					contact_desc: "准备好优化您的物流了吗？立即联系我们，获取个性化解决方案。",
+					contact_cta: "联系我们",
+					footer_copyright: "&copy; 2026 WeFreightGlobal LLC. 版权所有。",
+					footer_privacy: "隐私政策",
+					footer_terms: "服务条款"
+				}
+			};
+
+			function setLanguage(lang) {
+				document.querySelectorAll('[data-i18n-key]').forEach(element => {
+					const key = element.getAttribute('data-i18n-key');
+					if (translations[lang] && translations[lang][key]) {
+						if (key === 'page_title') {
+							document.title = translations[lang][key];
+						} else {
+							element.innerHTML = translations[lang][key]; // Use innerHTML for entities like &copy;
+						}
+					}
+				});
+				localStorage.setItem('lang', lang);
+				updateLanguageSwitcher(lang);
+			}
+
+			function updateLanguageSwitcher(lang) {
+				document.getElementById('lang-en').classList.toggle('font-bold', lang === 'en');
+				document.getElementById('lang-zh').classList.toggle('font-bold', lang === 'zh');
+			}
+
+			document.addEventListener('DOMContentLoaded', () => {
+				const userLang = localStorage.getItem('lang') || 'en'; // Default to English
+				setLanguage(userLang);
+
+				document.getElementById('lang-en').addEventListener('click', (e) => {
+					e.preventDefault();
+					setLanguage('en');
+				});
+
+				document.getElementById('lang-zh').addEventListener('click', (e) => {
+					e.preventDefault();
+					setLanguage('zh');
+				});
+			});
+		</script>
 	</body>
 </html>
