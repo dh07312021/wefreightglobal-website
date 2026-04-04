@@ -60,7 +60,7 @@
 						<img src="./resources/ad1.png" alt="Advertisement 1" class="rounded-lg shadow-md max-w-full h-auto" />
 					</div>
 					<div class="flex justify-center">
-						<img src="./resources/ad2.png" alt="Advertisement 2" class="rounded-lg shadow-md max-w-full h-auto" />
+						<img src="./resources/ad2.png" alt="Advertisement 2" data-i18n-src-key="ad2_src" class="rounded-lg shadow-md max-w-full h-auto" />
 					</div>
 				</div>
 			</div>
@@ -216,6 +216,7 @@
 					hero_headline: "Your Trusted Partner in Global Logistics",
 					hero_subheading: "Seamless, efficient, and reliable freight forwarding solutions tailored to your business needs.",
 					hero_cta: "Get a Free Quote",
+					ad2_src: "./resources/ad2.png",
 					services_title: "Our Services",
 					service_air_freight_title: "Air Freight",
 					service_air_freight_desc: "Fast and reliable air cargo solutions for time-sensitive shipments.",
@@ -266,6 +267,7 @@
 					hero_headline: "您值得信赖的全球物流伙伴",
 					hero_subheading: "无缝、高效、可靠的货运代理解决方案，满足您的业务需求。",
 					hero_cta: "获取免费报价",
+					ad2_src: "./resources/ad_chinese.png",
 					services_title: "我们的服务",
 					service_air_freight_title: "空运",
 					service_air_freight_desc: "快速可靠的空运解决方案，适用于时间敏感的货物。",
@@ -331,6 +333,14 @@
 					const key = element.getAttribute('data-i18n-alt-key');
 					if (translations[lang] && translations[lang][key]) {
 						element.alt = translations[lang][key];
+					}
+				});
+
+				// Update image sources
+				document.querySelectorAll('[data-i18n-src-key]').forEach(element => {
+					const key = element.getAttribute('data-i18n-src-key');
+					if (translations[lang] && translations[lang][key]) {
+						element.src = translations[lang][key];
 					}
 				});
 
