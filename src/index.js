@@ -1,3 +1,5 @@
+import { SMTPClient } from 'emailjs';
+
 export default {
 	async fetch(request, env) {
 		const url = new URL(request.url);
@@ -23,35 +25,28 @@ export default {
 
 				emailBody += "\n---\nSent from WeFreightGlobal Website";
 
-				// MailChannels integration (requires your domain DNS/SPF/DKIM to be set up)
-				const sendRequest = new Request("https://api.mailchannels.net/tx/v1/send", {
-					method: "POST",
-					headers: { "content-type": "application/json" },
-					body: JSON.stringify({
-						personalizations: [{
-							to: [{ email: "dh07312021@gmail.com", name: "WeFreightGlobal Quote Team" }],
-						}],
-						from: { email: "no-reply@wefreightglobal.com", name: "WeFreight Website" },
-						subject: formTitle + (data.name ? ` from ${data.name}` : ""),
-						content: [{ type: "text/plain", value: emailBody }],
-					}),
+				// Gmail SMTP configuration (using environment variables)
+				// Ensure you have set GMAIL_USER and GMAIL_PASS using 'wrangler secret put'
+				const client = new SMTPClient({
+					user: env.GMAIL_USER,
+					password: env.GMAIL_PASS,
+					host: 'smtp.gmail.com',
+					ssl: true,
 				});
 
-				const response = await fetch(sendRequest);
+				await client.sendAsync({
+					text: emailBody,
+					from: `WeFreight Website <${env.GMAIL_USER}>`,
+					to: 'quote@wefreightglobal.com',
+					subject: formTitle + (data.name ? ` from ${data.name}` : ""),
+				});
 
-				if (response.ok) {
-					return new Response(JSON.stringify({ success: true, message: "Email sent successfully" }), {
-						status: 200,
-						headers: { "Content-Type": "application/json" },
-					});
-				} else {
-					const errorText = await response.text();
-					return new Response(JSON.stringify({ success: false, error: errorText }), {
-						status: response.status,
-						headers: { "Content-Type": "application/json" },
-					});
-				}
+				return new Response(JSON.stringify({ success: true, message: "Email sent successfully" }), {
+					status: 200,
+					headers: { "Content-Type": "application/json" },
+				});
 			} catch (err) {
+				console.error("Gmail SMTP Error:", err);
 				return new Response(JSON.stringify({ success: false, error: err.message }), {
 					status: 500,
 					headers: { "Content-Type": "application/json" },
@@ -60,8 +55,6 @@ export default {
 		}
 
 		// Otherwise, serve the static assets from the public directory
-		// The Assets-only Worker will handle this automatically if we don't return a response
-		// or if we use the default fallback.
 		return env.ASSETS.fetch(request);
 	},
 };
