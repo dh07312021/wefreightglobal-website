@@ -5,6 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "still-star-a580",
+	"main": "src/index.js",
 	"compatibility_date": "2026-04-04",
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
